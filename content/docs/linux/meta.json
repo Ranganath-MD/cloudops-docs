@@ -1,0 +1,14 @@
+{
+  "title": "Linux",
+  "description": "OS fundamentals for Cloud & DevOps",
+  "root": true,
+  "pages": [
+    "index",
+    "---Basics---",
+    "basics",
+    "---Admin---",
+    "admin",
+    "---Scripting---",
+    "scripting"
+  ]
+}

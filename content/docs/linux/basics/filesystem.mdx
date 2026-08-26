@@ -1,0 +1,20 @@
+---
+title: File System Hierarchy
+description: Linux paths and file management
+---
+
+Explore the Linux filesystem layout and everyday file/directory commands.
+
+| Path | Purpose |
+| --- | --- |
+| `/etc` | Configuration |
+| `/var` | Logs and variable data |
+| `/home` | User homes |
+| `/usr` | User programs |
+
+```bash tab="Manage"
+mkdir labs && cd labs
+touch notes.txt
+cp notes.txt notes.bak
+find /etc -name "*.conf" | head
+```

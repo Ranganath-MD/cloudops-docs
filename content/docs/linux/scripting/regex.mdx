@@ -1,0 +1,18 @@
+---
+title: Regular Expressions
+description: Pattern matching with grep and sed
+---
+
+## Practice
+
+- Regex overview with `grep` / `egrep`
+- Text editing with `sed`
+
+```bash tab="grep"
+egrep -n 'error|fail' app.log
+grep -E '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' ips.txt
+```
+
+```bash tab="sed"
+sed -i 's/dev/prod/g' config.env
+```

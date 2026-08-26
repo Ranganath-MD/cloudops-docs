@@ -1,0 +1,10 @@
+{
+  "title": "Monitoring",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "observability",
+    "alerting",
+    "prometheus-grafana"
+  ]
+}

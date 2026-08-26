@@ -1,0 +1,18 @@
+{
+  "title": "AWS",
+  "description": "Amazon Web Services track",
+  "root": true,
+  "pages": [
+    "index",
+    "---Identity---",
+    "identity",
+    "---Compute---",
+    "compute",
+    "---Storage---",
+    "storage",
+    "---Data---",
+    "data",
+    "---Serverless---",
+    "serverless"
+  ]
+}

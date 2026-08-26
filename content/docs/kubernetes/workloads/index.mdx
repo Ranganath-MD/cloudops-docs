@@ -1,0 +1,63 @@
+---
+title: Workloads
+description: Deployments, Services, and health probes
+---
+
+Most apps run as Deployments fronted by a Service, with readiness and liveness probes.
+
+## Minimal Deployment
+
+```yaml tab="Deployment"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/api:1.2.3
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+```
+
+```yaml tab="Service"
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  selector:
+    app: api
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+<Tabs items={['Deployment', 'StatefulSet', 'DaemonSet']}>
+  <Tab value="Deployment">
+    Stateless apps that can scale horizontally and roll out gradually.
+  </Tab>
+  <Tab value="StatefulSet">
+    Stable network identity and ordered pods (databases, brokers).
+  </Tab>
+  <Tab value="DaemonSet">
+    One pod per node (agents, CNI, log collectors).
+  </Tab>
+</Tabs>
+
+<Callout title="Rollouts" type="success">
+  Prefer rolling updates with readiness probes so traffic only hits healthy pods.
+</Callout>

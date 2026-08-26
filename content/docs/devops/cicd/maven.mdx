@@ -1,0 +1,44 @@
+---
+title: Maven
+description: Java build lifecycle for CI pipelines
+---
+
+Maven standardizes how Java projects compile, test, and package artifacts for Jenkins.
+
+## Why build tools matter
+
+- Repeatable builds on every agent
+- Clear lifecycle phases
+- Dependency management
+- Artifacts ready for deploy
+
+## Common goals
+
+| Goal | Result |
+| --- | --- |
+| `mvn clean` | Remove `target/` |
+| `mvn compile` | Compile sources |
+| `mvn test` | Run unit tests |
+| `mvn package` | Build JAR/WAR |
+| `mvn install` | Install to local repo |
+
+```bash tab="CI-friendly"
+mvn -B clean package
+# -B = batch mode (no interactive prompts)
+```
+
+```xml tab="pom snippet"
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>demo</artifactId>
+  <version>1.0.0</version>
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
+</project>
+```
+
+<Callout title="Jenkins tip" type="idea">
+  In Jenkins, set Maven goals to `clean package` and archive `target/*.jar` as a build artifact.
+</Callout>

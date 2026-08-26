@@ -1,0 +1,26 @@
+---
+title: Helm Charts
+description: Package and release Kubernetes applications
+---
+
+Helm packages YAML into versioned charts so installs and upgrades stay consistent.
+
+```bash tab="Install"
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm install web bitnami/nginx
+helm list
+helm upgrade web bitnami/nginx --set replicaCount=3
+helm rollback web 1
+```
+
+```bash tab="Package own chart"
+helm create myapp
+helm lint myapp
+helm package myapp
+helm install myapp ./myapp-0.1.0.tgz
+```
+
+<Callout title="Why Helm?" type="idea">
+  Templating + values files keep the same chart working for dev, QA, and prod with different configs.
+</Callout>

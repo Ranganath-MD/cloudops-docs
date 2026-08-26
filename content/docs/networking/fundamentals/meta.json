@@ -1,0 +1,10 @@
+{
+  "title": "Fundamentals",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "vpc",
+    "subnets",
+    "osi-tcpip"
+  ]
+}

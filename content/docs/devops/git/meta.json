@@ -1,0 +1,9 @@
+{
+  "title": "Git",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "basics",
+    "branching"
+  ]
+}

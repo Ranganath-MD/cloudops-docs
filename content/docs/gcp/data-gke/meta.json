@@ -1,0 +1,10 @@
+{
+  "title": "Data & GKE",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "storage",
+    "gke",
+    "ops"
+  ]
+}

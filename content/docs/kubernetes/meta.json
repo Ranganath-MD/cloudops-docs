@@ -1,0 +1,14 @@
+{
+  "title": "Kubernetes",
+  "description": "Clusters, workloads, and CKA topics",
+  "root": true,
+  "pages": [
+    "index",
+    "---Architecture---",
+    "architecture",
+    "---Workloads---",
+    "workloads",
+    "---Ops---",
+    "ops"
+  ]
+}

@@ -1,0 +1,69 @@
+---
+title: Linux Commands
+description: Everyday CLI tools, filters, and Vim basics
+---
+
+Master the commands you will use every day on cloud servers and containers.
+
+## Navigation and inspection
+
+```bash tab="Navigate"
+pwd
+ls -lah
+cd /var/log
+```
+
+```bash tab="Inspect"
+cat /etc/os-release
+less /etc/passwd
+wc -l /var/log/messages
+```
+
+## Filters
+
+Use filters to skim large log files without opening the whole file in an editor.
+
+| Command | Use |
+| --- | --- |
+| `head` | First N lines |
+| `tail` | Last N lines / follow |
+| `more` / `less` | Page through output |
+| `grep` | Search for patterns |
+
+```bash tab="Filters"
+head -n 20 /var/log/messages
+tail -f /var/log/secure
+grep -i error /var/log/messages | head
+```
+
+## Vim modes
+
+1. **Normal** — navigate and run commands
+2. **Insert** — type text (`i`, `a`, `o`)
+3. **Command** — save/quit (`:w`, `:q`, `:wq`)
+
+```bash tab="Quick edit"
+vim notes.txt
+# i  → insert text
+# Esc → normal mode
+# :wq → save and quit
+```
+
+<Callout title="Lab" type="info">
+  Log in to a lab VM, create a file with Vim, then use `head`, `tail`, and `grep` on `/var/log`.
+</Callout>
+
+## Switching users
+
+```bash tab="su"
+whoami
+su -
+# full login shell as root
+
+su - trainee
+# switch to another user with that user's environment
+```
+
+<Callout title="Tip" type="warn">
+  Prefer `sudo` for least privilege instead of staying logged in as root.
+</Callout>

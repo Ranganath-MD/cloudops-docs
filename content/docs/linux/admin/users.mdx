@@ -1,0 +1,17 @@
+---
+title: User Administration
+description: Local users and the root account
+---
+
+## Tasks
+
+- Add / modify / delete users
+- Manage groups and ownership
+- Understand the root account
+
+```bash tab="Users"
+useradd -m devops
+passwd devops
+usermod -aG wheel devops
+userdel -r olduser
+```

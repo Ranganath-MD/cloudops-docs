@@ -1,0 +1,10 @@
+{
+  "title": "Azure DevOps",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "index",
+    "pipelines",
+    "aks-terraform"
+  ]
+}

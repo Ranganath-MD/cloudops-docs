@@ -1,0 +1,27 @@
+---
+title: Auto Scaling
+description: Scale EC2 capacity with demand
+---
+
+Auto Scaling Groups keep the right number of instances running based on metrics or schedules.
+
+<Callout title="Health checks" type="info">
+  Prefer ELB health checks when instances sit behind a load balancer.
+</Callout>
+
+```bash tab="AWS CLI"
+aws autoscaling describe-auto-scaling-groups \
+  --query 'AutoScalingGroups[*].[AutoScalingGroupName,MinSize,MaxSize,DesiredCapacity]' \
+  --output table
+```
+
+```terraform tab="Terraform"
+resource "aws_autoscaling_group" "api" {
+  name                = "api"
+  min_size            = 2
+  max_size            = 10
+  desired_capacity    = 3
+  vpc_zone_identifier = var.private_subnet_ids
+  target_group_arns   = [aws_lb_target_group.api.arn]
+}
+```

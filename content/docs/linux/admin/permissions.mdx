@@ -1,0 +1,37 @@
+---
+title: Permissions & ACLs
+description: chmod, ownership, special bits, and ACLs
+---
+
+Linux file security starts with owner / group / other permissions.
+
+## Permission bits
+
+| Symbol | Meaning |
+| --- | --- |
+| `r` | read |
+| `w` | write |
+| `x` | execute / enter directory |
+
+```bash tab="chmod / chown"
+ls -l script.sh
+chmod 750 script.sh
+chown trainee:devops script.sh
+```
+
+## Special permissions
+
+- **SUID / SGID** — run as owner/group
+- **Sticky bit** — common on `/tmp`
+
+## ACLs
+
+```bash tab="ACL"
+getfacl project/
+setfacl -m u:alice:rwx project/
+setfacl -m g:devs:rx project/
+```
+
+<Callout title="Security tip" type="warn">
+  Avoid `777`. Grant only the access each user or service needs.
+</Callout>

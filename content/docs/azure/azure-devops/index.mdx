@@ -1,0 +1,18 @@
+---
+title: Azure DevOps Overview
+description: Enterprise DevOps workflow on Azure
+---
+
+## Services
+
+- Repos, Pipelines, Boards, Artifacts, Test Plans
+- Why teams use Azure DevOps alongside or instead of Jenkins alone
+
+```yaml tab="Pipeline sketch"
+trigger:
+  - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+  - script: echo "Build and test"
+```

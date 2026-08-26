@@ -1,0 +1,20 @@
+---
+title: Troubleshooting
+description: Common cluster failure checks
+---
+
+Start from events and conditions, then narrow to Pod, node, or network.
+
+```bash tab="Pod"
+kubectl describe pod api-xxxxx -n api
+kubectl logs api-xxxxx -n api --previous
+```
+
+```bash tab="Node"
+kubectl get nodes -o wide
+kubectl describe node node-1
+```
+
+<Callout title="CrashLoopBackOff" type="warn">
+  Check logs from the previous container, readiness probes, and missing ConfigMap/Secret mounts.
+</Callout>

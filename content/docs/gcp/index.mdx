@@ -1,0 +1,28 @@
+---
+title: GCP Overview
+description: Google Cloud infrastructure and services
+---
+
+GCP labs emphasize Free Tier setup, IAM, Compute Engine, VPC, storage, and GKE.
+
+<Cards>
+  <Card title="Intro" href="/docs/gcp/fundamentals/intro" description="Regions, zones, hierarchy" />
+  <Card title="IAM" href="/docs/gcp/fundamentals/iam" description="Members, roles, service accounts" />
+  <Card title="Compute" href="/docs/gcp/compute-network/compute" description="VMs and SSH" />
+  <Card title="GKE" href="/docs/gcp/data-gke/gke" description="Kubernetes on GCP" />
+</Cards>
+
+```bash tab="gcloud"
+gcloud auth login
+gcloud projects list
+gcloud config set project MY_PROJECT_ID
+```
+
+## Quick mapping
+
+| AWS | Azure | GCP |
+| --- | --- | --- |
+| IAM | Entra + RBAC | Cloud IAM |
+| EC2 | Virtual Machines | Compute Engine |
+| VPC | Virtual Network | VPC |
+| EKS | AKS | GKE |

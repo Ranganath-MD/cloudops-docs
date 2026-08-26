@@ -1,0 +1,11 @@
+{
+  "title": "Workloads",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "index",
+    "pods-services",
+    "config",
+    "helm"
+  ]
+}

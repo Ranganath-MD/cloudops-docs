@@ -1,0 +1,27 @@
+---
+title: Control Plane
+description: API server, scheduler, controllers, and etcd
+---
+
+The control plane stores cluster state and schedules workloads onto worker nodes.
+
+## Components
+
+| Component | Job |
+| --- | --- |
+| kube-apiserver | Front door for all cluster requests |
+| etcd | Key-value store for cluster state |
+| scheduler | Picks nodes for Pods |
+| controller-manager | Reconciles desired vs actual state |
+| kubelet | Runs Pods on each node |
+| kube-proxy | Service networking on nodes |
+
+```bash tab="Inspect"
+kubectl get nodes -o wide
+kubectl get pods -n kube-system
+kubectl get --raw='/readyz?verbose'
+```
+
+<Callout title="CKA tip" type="info">
+  If the API is up but Pods are Pending, check scheduler events and node resources before changing manifests.
+</Callout>

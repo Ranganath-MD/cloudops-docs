@@ -1,0 +1,9 @@
+{
+  "title": "Testing",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "pipeline",
+    "sast-dast"
+  ]
+}

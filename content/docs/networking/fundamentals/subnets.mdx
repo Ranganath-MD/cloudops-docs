@@ -1,0 +1,31 @@
+---
+title: Subnets
+description: Public and private subnet design
+---
+
+Split your VPC into public and private subnets so internet-facing and internal workloads stay separated.
+
+<Callout title="Rule of thumb" type="info">
+  Put load balancers in public subnets and application/data tiers in private subnets.
+</Callout>
+
+## Checklist
+
+- One subnet per Availability Zone you use
+- Distinct route tables for public vs private
+- NAT for private outbound traffic when needed
+
+```bash tab="AWS CLI"
+aws ec2 describe-subnets \
+  --filters Name=vpc-id,Values=vpc-0123456789abcdef0 \
+  --query 'Subnets[*].[SubnetId,AvailabilityZone,CidrBlock]' \
+  --output table
+```
+
+```terraform tab="Terraform"
+resource "aws_subnet" "private_a" {
+  vpc_id            = aws_vpc.main.id
+  cidr_block        = "10.0.10.0/24"
+  availability_zone = "us-east-1a"
+}
+```

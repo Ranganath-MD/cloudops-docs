@@ -1,0 +1,55 @@
+---
+title: Git Basics
+description: Version control with GitHub and GitLab
+---
+
+Git tracks changes so teams can collaborate safely. Every Cloud/DevOps lab in this track starts with a repo.
+
+## Why version control?
+
+- History of every change
+- Parallel work with branches
+- Easy rollback when a deploy fails
+- Source of truth for CI/CD
+
+## First repo
+
+```bash tab="Local"
+git config --global user.name "Trainee"
+git config --global user.email "trainee@example.com"
+mkdir demo && cd demo
+git init
+echo "# Demo" > README.md
+git add README.md
+git commit -m "Initial commit"
+```
+
+```bash tab="Remote"
+git remote add origin https://github.com/org/demo.git
+git branch -M main
+git push -u origin main
+```
+
+## Daily commands
+
+| Command | Purpose |
+| --- | --- |
+| `git status` | What changed? |
+| `git pull` | Get remote updates |
+| `git add` | Stage files |
+| `git commit` | Save a snapshot |
+| `git push` | Publish commits |
+| `git stash` | Park unfinished work |
+
+```bash tab="Workflow"
+git pull
+# edit files
+git status
+git add .
+git commit -m "Add health check endpoint"
+git push
+```
+
+<Callout title="Hands-on" type="idea">
+  Create a GitHub repo, clone it on your Linux VM, push a README, then clone the same repo again to prove remotes work.
+</Callout>

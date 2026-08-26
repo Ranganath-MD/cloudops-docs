@@ -1,0 +1,16 @@
+---
+title: GCP IAM
+description: Identity and access management
+---
+
+## Hands-on
+
+- Create users and service accounts
+- Assign roles at project level
+- Primitive vs predefined vs custom roles
+
+```bash tab="gcloud"
+gcloud projects add-iam-policy-binding MY_PROJECT \
+  --member="user:trainee@example.com" \
+  --role="roles/viewer"
+```

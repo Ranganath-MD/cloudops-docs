@@ -1,0 +1,366 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/generated/notebook.css';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+/* Teamtask-like palette: white chrome + emerald accents */
+:root {
+  --color-fd-background: hsl(0, 0%, 100%);
+  --color-fd-foreground: hsl(220, 20%, 10%);
+  --color-fd-muted: hsl(220, 16%, 96%);
+  --color-fd-muted-foreground: hsl(220, 9%, 46%);
+  --color-fd-popover: hsl(0, 0%, 100%);
+  --color-fd-popover-foreground: hsl(220, 20%, 10%);
+  --color-fd-card: hsl(0, 0%, 100%);
+  --color-fd-card-foreground: hsl(220, 20%, 10%);
+  --color-fd-border: hsl(220, 13%, 91%);
+  --color-fd-primary: hsl(152, 76%, 36%);
+  --color-fd-primary-foreground: hsl(0, 0%, 100%);
+  --color-fd-secondary: hsl(220, 14%, 96%);
+  --color-fd-secondary-foreground: hsl(220, 16%, 20%);
+  --color-fd-accent: hsl(152, 60%, 95%);
+  --color-fd-accent-foreground: hsl(152, 70%, 28%);
+  --color-fd-ring: hsl(152, 76%, 36%);
+  --color-fd-info: hsl(152, 60%, 40%);
+}
+
+.dark {
+  --color-fd-background: hsl(220, 16%, 8%);
+  --color-fd-foreground: hsl(220, 14%, 94%);
+  --color-fd-muted: hsl(220, 12%, 14%);
+  --color-fd-muted-foreground: hsl(220, 8%, 62%);
+  --color-fd-popover: hsl(220, 14%, 11%);
+  --color-fd-popover-foreground: hsl(220, 14%, 94%);
+  --color-fd-card: hsl(220, 14%, 11%);
+  --color-fd-card-foreground: hsl(220, 14%, 94%);
+  --color-fd-border: hsl(220, 12%, 18%);
+  --color-fd-primary: hsl(152, 70%, 48%);
+  --color-fd-primary-foreground: hsl(0, 0%, 100%);
+  --color-fd-secondary: hsl(220, 12%, 16%);
+  --color-fd-secondary-foreground: hsl(220, 14%, 92%);
+  --color-fd-accent: hsla(152, 70%, 48%, 0.14);
+  --color-fd-accent-foreground: hsl(152, 70%, 72%);
+  --color-fd-ring: hsl(152, 70%, 48%);
+}
+
+body {
+  background: var(--color-fd-background);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-fd-foreground);
+}
+
+#nd-notebook-layout {
+  font-size: 14px;
+}
+
+/* ---------- Top header ---------- */
+#nd-notebook-layout header,
+#nd-notebook-layout [id*='header'],
+#nd-subnav {
+  border-color: var(--color-fd-border);
+  background: var(--color-fd-background);
+}
+
+#nd-notebook-layout header a,
+#nd-notebook-layout header button,
+#nd-subnav a,
+#nd-subnav button {
+  font-size: 13.5px;
+}
+
+/* Navbar tabs underline style */
+#nd-notebook-layout [role='tab'],
+#nd-notebook-layout nav a[data-active='true'],
+#nd-subnav a[aria-current='page'] {
+  font-weight: 600;
+}
+
+/* ---------- Sidebar (dense) ---------- */
+#nd-sidebar {
+  font-size: 13px;
+  line-height: 1.3;
+  border-color: var(--color-fd-border);
+  background: var(--color-fd-background);
+}
+
+#nd-sidebar a,
+#nd-sidebar button {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+  padding-block: 0.28rem !important;
+  padding-inline: 0.5rem !important;
+  border-radius: 0.375rem !important;
+  gap: 0.4rem;
+  min-height: 0;
+}
+
+#nd-sidebar .mt-4,
+#nd-sidebar [class*='mt-4'] {
+  margin-top: 0.5rem !important;
+}
+
+#nd-sidebar [class*='font-medium'],
+#nd-sidebar .text-fd-muted-foreground {
+  font-size: 11.5px !important;
+  font-weight: 650 !important;
+  color: var(--color-fd-foreground) !important;
+}
+
+#nd-sidebar svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+
+/* Hide nested tree guide lines (before:bg-fd-border) */
+#nd-sidebar [class*='before:bg-fd-border']::before,
+#nd-mobile-sidebar [class*='before:bg-fd-border']::before {
+  display: none !important;
+  background: transparent !important;
+  content: none !important;
+}
+
+/* Active: green text + left rail (no fill pill) */
+#nd-sidebar a.bg-fd-primary\/10,
+#nd-sidebar a.text-fd-primary,
+#nd-mobile-sidebar a.bg-fd-primary\/10,
+#nd-mobile-sidebar a.text-fd-primary {
+  position: relative;
+  background: transparent !important;
+  color: var(--color-fd-primary) !important;
+  font-weight: 600;
+}
+
+#nd-sidebar a.bg-fd-primary\/10::before,
+#nd-sidebar a.text-fd-primary::before,
+#nd-mobile-sidebar a.bg-fd-primary\/10::before,
+#nd-mobile-sidebar a.text-fd-primary::before {
+  content: '';
+  position: absolute;
+  inset-block: 0.15rem;
+  inset-inline-start: 0;
+  width: 2px;
+  background: var(--color-fd-primary);
+  border-radius: 1px;
+}
+
+/* ---------- Main article ---------- */
+#nd-page {
+  font-size: 14px;
+  line-height: 1.55;
+  padding: 0.75rem 1rem 1.5rem !important;
+  gap: 0.45rem !important;
+}
+
+@media (min-width: 768px) {
+  #nd-page {
+    padding: 0.85rem 1.25rem 1.75rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  #nd-page {
+    padding: 0.85rem 1.5rem 2rem !important;
+  }
+}
+
+#nd-page h1 {
+  font-size: 1.55rem !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em;
+  font-weight: 700 !important;
+  color: var(--color-fd-foreground);
+  margin: 0 !important;
+}
+
+#nd-page .text-lg,
+#nd-page > p {
+  font-size: 13.5px !important;
+  line-height: 1.45 !important;
+  color: var(--color-fd-muted-foreground);
+  margin: 0 !important;
+  padding-bottom: 0.65rem !important;
+}
+
+#nd-page .prose {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  color: var(--color-fd-foreground);
+  --tw-prose-body: var(--color-fd-foreground);
+  --tw-prose-headings: var(--color-fd-foreground);
+  --tw-prose-links: var(--color-fd-primary);
+  --tw-prose-bold: var(--color-fd-foreground);
+  --tw-prose-counters: var(--color-fd-muted-foreground);
+  --tw-prose-bullets: var(--color-fd-muted-foreground);
+}
+
+#nd-page .prose :where(p, li, td, th),
+#nd-page p,
+#nd-page li {
+  color: inherit;
+}
+
+#nd-page .prose :where(p) {
+  color: var(--color-fd-foreground);
+}
+
+#nd-page .prose :where(h2) {
+  font-size: 1.05rem !important;
+  line-height: 1.25 !important;
+  margin-bottom: 0.35em !important;
+  font-weight: 700;
+  color: var(--color-fd-foreground);
+  letter-spacing: -0.02em;
+}
+
+#nd-page .prose :where(h3) {
+  font-size: 0.95rem !important;
+  margin-bottom: 0.25em !important;
+  font-weight: 650;
+  color: var(--color-fd-foreground);
+}
+
+#nd-page .prose :where(p, ul, ol, pre, table, blockquote, hr) {
+  margin-top: 0.55em !important;
+  margin-bottom: 0.55em !important;
+}
+
+#nd-page .prose :where(li) {
+  margin-top: 0.12em !important;
+  margin-bottom: 0.12em !important;
+}
+
+#nd-page .prose :where(code) {
+  font-size: 0.84em !important;
+  padding: 0.08em 0.25em !important;
+  border-radius: 0.25rem;
+  background: var(--color-fd-muted);
+}
+
+/* Code blocks — outer radius only; no nested pre box */
+#nd-page figure.shiki {
+  overflow: hidden;
+  box-shadow: none;
+  margin-block: 0.65rem !important;
+}
+
+#nd-page figure.shiki > div.border-b {
+  background: var(--color-fd-card);
+  height: 2rem !important;
+  padding-inline: 0.75rem !important;
+}
+
+#nd-page figure.shiki [role='region'] {
+  padding: 0.65rem 0.75rem !important;
+  border-radius: 0 !important;
+  background: var(--color-fd-muted);
+}
+
+#nd-page figure.shiki pre,
+#nd-page .prose figure pre,
+#nd-page .prose :where(pre) {
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* Code-block tabs — flush, no outer/inner margin gap */
+#nd-page .bg-fd-card.rounded-xl.border.my-4:has([role='tablist']):has(figure),
+#nd-page div.rounded-xl.border:has(> [role='tablist']):has(figure) {
+  margin-block: 0.55rem !important;
+  overflow: hidden;
+}
+
+#nd-page [role='tabpanel'] {
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+#nd-page [role='tabpanel'] > figure {
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+#nd-page [role='tabpanel'] > figure [role='region'] {
+  padding: 0.65rem 0.75rem !important;
+  border-radius: 0 !important;
+}
+
+/* Regular (non-code) tabs keep a bit of padding */
+#nd-page [role='tabpanel']:not(:has(> figure)) {
+  padding: 0.55rem 0.75rem !important;
+}
+
+#nd-page .prose :where(th, td) {
+  padding: 0.35rem 0.55rem !important;
+  font-size: 13px;
+  color: var(--color-fd-foreground);
+}
+
+#nd-page [role='tab'] {
+  font-size: 12.5px !important;
+  padding-block: 0.35rem !important;
+}
+
+#nd-page nav,
+#nd-page [class*='breadcrumb'] {
+  font-size: 11.5px;
+  color: var(--color-fd-muted-foreground);
+  margin-bottom: 0.15rem !important;
+}
+
+/* Images */
+#nd-page .prose :where(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-block: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-fd-border);
+  background: var(--color-fd-muted);
+}
+
+/* Callouts */
+#nd-page [class*='callout'],
+#nd-page [data-callout],
+#nd-page .bg-fd-info\/10,
+#nd-page [class*='fd-info'] {
+  border-radius: 0.4rem;
+  padding: 0.55rem 0.7rem !important;
+  margin-block: 0.55rem !important;
+  font-size: 13.5px !important;
+}
+
+/* Footer nav cards — fix dark-mode title color */
+#nd-page a p,
+#nd-page footer p,
+#nd-page [class*='grid'] p {
+  color: var(--color-fd-foreground) !important;
+}
+
+#nd-page a p.text-fd-muted-foreground,
+#nd-page footer p.text-fd-muted-foreground,
+#nd-page [class*='grid'] p.text-fd-muted-foreground {
+  color: var(--color-fd-muted-foreground) !important;
+}
+
+#nd-page [class*='grid'] a,
+#nd-page footer a {
+  padding: 0.65rem 0.75rem !important;
+}

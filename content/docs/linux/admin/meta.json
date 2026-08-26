@@ -1,0 +1,10 @@
+{
+  "title": "Admin",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "permissions",
+    "users",
+    "packages"
+  ]
+}

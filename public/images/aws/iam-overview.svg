@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" fill="none">
+  <rect width="960" height="420" rx="12" fill="#F3F4F6"/>
+  <rect x="48" y="48" width="200" height="120" rx="10" fill="#fff" stroke="#E5E7EB"/>
+  <text x="148" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#111827">User</text>
+  <text x="148" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#6B7280">trainee</text>
+  <rect x="380" y="48" width="200" height="120" rx="10" fill="#fff" stroke="#E5E7EB"/>
+  <text x="480" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#111827">Group</text>
+  <text x="480" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#6B7280">developers</text>
+  <rect x="712" y="48" width="200" height="120" rx="10" fill="#ECFDF5" stroke="#16A260"/>
+  <text x="812" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#0F7A45">Policy</text>
+  <text x="812" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#0F7A45">S3ReadOnly</text>
+  <path d="M248 108 H380" stroke="#16A260" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M580 108 H712" stroke="#16A260" stroke-width="2"/>
+  <rect x="230" y="240" width="500" height="120" rx="10" fill="#fff" stroke="#E5E7EB"/>
+  <text x="480" y="292" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#111827">Role (assumed by EC2)</text>
+  <text x="480" y="320" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#6B7280">temporary credentials via STS</text>
+  <path d="M480 168 V240" stroke="#16A260" stroke-width="2"/>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#16A260"/>
+    </marker>
+  </defs>
+</svg>

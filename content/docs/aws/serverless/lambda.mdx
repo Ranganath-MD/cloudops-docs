@@ -1,0 +1,42 @@
+---
+title: Lambda & CloudFront
+description: Serverless functions and CDN basics
+---
+
+Lambda runs code without managing servers. CloudFront caches content at the edge.
+
+## When Lambda fits
+
+- APIs and webhooks
+- S3 event processing
+- Scheduled cleanup jobs
+- Glue between AWS services
+
+```js tab="handler.js"
+export const handler = async (event) => {
+  console.log('event', JSON.stringify(event));
+  return {
+    statusCode: 200,
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ ok: true, message: 'Hello from Lambda' }),
+  };
+};
+```
+
+```bash tab="Deploy sketch"
+zip function.zip handler.js
+aws lambda create-function \
+  --function-name hello-lab \
+  --runtime nodejs20.x \
+  --role arn:aws:iam::123456789012:role/lambda-basic \
+  --handler handler.handler \
+  --zip-file fileb://function.zip
+```
+
+## CloudFront note
+
+Put CloudFront in front of S3 or an ALB to improve global latency and offload origin traffic.
+
+<Callout title="Curriculum" type="idea">
+  Pair Lambda with an API Gateway endpoint, then optionally front static assets with CloudFront.
+</Callout>

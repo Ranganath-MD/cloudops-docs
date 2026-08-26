@@ -1,0 +1,15 @@
+---
+title: Compose & Swarm
+description: Multi-container and orchestration basics
+---
+
+Scale services with Docker Compose and explore Swarm for container management.
+
+```yaml tab="compose"
+services:
+  web:
+    image: lab-apache
+    ports: ["8080:80"]
+    deploy:
+      replicas: 3
+```

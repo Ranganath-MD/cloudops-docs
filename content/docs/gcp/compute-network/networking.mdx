@@ -1,0 +1,17 @@
+---
+title: GCP Networking
+description: VPC, subnets, and firewalls
+---
+
+## Topics
+
+- Global VPC concept
+- Regional subnets
+- Firewall rules, routes, external vs internal IPs
+- HTTP load balancing and autoscaling policies
+
+```bash tab="VPC"
+gcloud compute networks create lab-vpc --subnet-mode=custom
+gcloud compute networks subnets create lab-subnet \
+  --network=lab-vpc --range=10.10.0.0/24 --region=us-central1
+```

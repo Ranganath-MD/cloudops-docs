@@ -1,0 +1,9 @@
+{
+  "title": "Scripting",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "shell-basics",
+    "regex"
+  ]
+}

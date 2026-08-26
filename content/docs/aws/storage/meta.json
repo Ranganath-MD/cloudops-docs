@@ -1,0 +1,10 @@
+{
+  "title": "Storage",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "index",
+    "lifecycle",
+    "efs"
+  ]
+}

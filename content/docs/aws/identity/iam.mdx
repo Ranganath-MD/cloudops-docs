@@ -1,0 +1,55 @@
+---
+title: IAM
+description: Users, groups, roles, policies, MFA, and STS
+---
+
+IAM controls who can do what in your AWS account. Treat it as the front door to every lab.
+
+![IAM building blocks: user, group, policy, and role](/images/aws/iam-overview.svg)
+
+## Building blocks
+
+| Object | Purpose |
+| --- | --- |
+| User | Long-lived human or service identity |
+| Group | Permission bundle for users |
+| Role | Temporary credentials assumed by users/services |
+| Policy | JSON allow/deny statements |
+
+## Lab sequence
+
+1. Create a user and group
+2. Attach managed policies
+3. Create a custom policy
+4. Create a role for EC2
+5. Enable MFA on the root/admin user
+
+```bash tab="CLI"
+aws iam create-user --user-name trainee
+aws iam create-group --group-name developers
+aws iam add-user-to-group --user-name trainee --group-name developers
+aws iam attach-group-policy \
+  --group-name developers \
+  --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
+```
+
+```json tab="Custom policy"
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ListLabBucket",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket", "s3:GetObject"],
+      "Resource": [
+        "arn:aws:s3:::lab-bucket",
+        "arn:aws:s3:::lab-bucket/*"
+      ]
+    }
+  ]
+}
+```
+
+<Callout title="Security" type="warn">
+  Prefer roles over access keys. Rotate keys, enforce MFA, and never share the root account.
+</Callout>

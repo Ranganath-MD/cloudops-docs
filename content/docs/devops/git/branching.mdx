@@ -1,0 +1,47 @@
+---
+title: Branches & Merge
+description: Feature branches, merge, and rebase
+---
+
+Branches let you build features without breaking `main`.
+
+## Feature branch flow
+
+```bash tab="Create"
+git checkout main
+git pull
+git checkout -b feature/login-api
+# implement feature
+git add .
+git commit -m "Add login API"
+git push -u origin feature/login-api
+```
+
+```bash tab="Merge"
+git checkout main
+git pull
+git merge feature/login-api
+git push
+```
+
+## Merge vs rebase
+
+<Tabs items={['Merge', 'Rebase']}>
+  <Tab value="Merge">
+    Preserves branch history. Safer for shared branches. Creates a merge commit.
+  </Tab>
+  <Tab value="Rebase">
+    Replays your commits on top of latest `main`. Cleaner history — avoid rebasing shared branches.
+  </Tab>
+</Tabs>
+
+```bash tab="Rebase sketch"
+git checkout feature/login-api
+git fetch origin
+git rebase origin/main
+git push --force-with-lease
+```
+
+<Callout title="Team rule" type="warn">
+  Never force-push to `main`. Use pull requests for review before merging.
+</Callout>

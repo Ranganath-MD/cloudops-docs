@@ -1,0 +1,31 @@
+---
+title: Cloud Concepts
+description: Core Azure services, security, and governance
+---
+
+## Topics from the curriculum
+
+- Cloud models and core Azure services
+- Security, privacy, compliance, and trust
+- Pricing and support plans
+- Identities and governance
+- Storage, compute, networking overview
+- Monitor and backup
+
+```bash tab="Explore"
+az account show -o table
+az group list -o table
+az resource list -g lab-rg -o table
+```
+
+## Identity snapshot
+
+| Service | Role |
+| --- | --- |
+| Microsoft Entra ID | Users, groups, apps |
+| RBAC | Resource permissions |
+| Policies | Guardrails / compliance |
+
+<Callout title="Practice" type="info">
+  Create a resource group, assign Reader to a teammate, and verify they cannot create VMs.
+</Callout>

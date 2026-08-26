@@ -1,0 +1,9 @@
+{
+  "title": "Containers",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "docker",
+    "compose-swarm"
+  ]
+}

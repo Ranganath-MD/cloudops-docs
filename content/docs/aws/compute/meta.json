@@ -1,0 +1,10 @@
+{
+  "title": "Compute",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "index",
+    "auto-scaling",
+    "elb"
+  ]
+}

@@ -1,0 +1,38 @@
+---
+title: S3 Storage
+description: Buckets, object storage classes, and access policies
+---
+
+S3 stores objects durably and cheaply — backups, static sites, data lakes, and CI artifacts.
+
+## Storage classes (quick map)
+
+| Class | When to use |
+| --- | --- |
+| Standard | Hot, frequent access |
+| Standard-IA / One Zone-IA | Infrequent access |
+| Glacier Instant / Flexible / Deep Archive | Long-term backup |
+| Intelligent-Tiering | Unknown or changing access patterns |
+
+```bash tab="Bucket"
+aws s3 mb s3://lab-assets-$(date +%s) --region us-east-1
+aws s3 cp ./site s3://lab-assets-xxx/ --recursive
+aws s3 ls s3://lab-assets-xxx/
+```
+
+```json tab="Bucket policy"
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Sid": "PublicReadGetObject",
+    "Effect": "Allow",
+    "Principal": "*",
+    "Action": "s3:GetObject",
+    "Resource": "arn:aws:s3:::lab-static-site/*"
+  }]
+}
+```
+
+<Callout title="Warn" type="warn">
+  Block public access by default. Only open objects intentionally for static websites or public assets.
+</Callout>

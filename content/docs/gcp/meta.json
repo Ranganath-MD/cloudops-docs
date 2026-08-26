@@ -1,0 +1,14 @@
+{
+  "title": "GCP",
+  "description": "Google Cloud Platform track",
+  "root": true,
+  "pages": [
+    "index",
+    "---Start---",
+    "fundamentals",
+    "---Platform---",
+    "compute-network",
+    "---Data---",
+    "data-gke"
+  ]
+}

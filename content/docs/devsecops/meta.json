@@ -1,0 +1,14 @@
+{
+  "title": "DevSecOps",
+  "description": "Security in the delivery lifecycle",
+  "root": true,
+  "pages": [
+    "index",
+    "---Core---",
+    "principles",
+    "---Testing---",
+    "testing",
+    "---Hardening---",
+    "hardening"
+  ]
+}

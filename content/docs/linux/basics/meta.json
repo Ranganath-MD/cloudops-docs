@@ -1,0 +1,10 @@
+{
+  "title": "Basics",
+  "defaultOpen": true,
+  "collapsible": true,
+  "pages": [
+    "index",
+    "commands",
+    "filesystem"
+  ]
+}

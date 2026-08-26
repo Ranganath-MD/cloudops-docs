@@ -1,0 +1,15 @@
+---
+title: Storage & Databases
+description: Cloud Storage, Cloud SQL, Firestore
+---
+
+## Services
+
+- Cloud Storage classes (Standard → Archive)
+- Cloud SQL and Firestore
+- BigQuery (concept only)
+
+```bash tab="Storage"
+gsutil mb -l us-central1 gs://lab-bucket-xxxx
+gsutil lifecycle set lifecycle.json gs://lab-bucket-xxxx
+```
