@@ -1,9 +1,0 @@
-{
-  "title": "Hardening",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "linux-docker",
-    "k8s-iac"
-  ]
-}

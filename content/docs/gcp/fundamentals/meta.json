@@ -1,9 +1,0 @@
-{
-  "title": "Fundamentals",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "intro",
-    "iam"
-  ]
-}

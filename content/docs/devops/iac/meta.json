@@ -1,9 +1,0 @@
-{
-  "title": "IaC",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "ansible",
-    "terraform"
-  ]
-}

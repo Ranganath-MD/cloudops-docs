@@ -1,9 +1,0 @@
-{
-  "title": "CI/CD",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "maven",
-    "jenkins"
-  ]
-}

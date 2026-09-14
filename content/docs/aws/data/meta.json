@@ -1,9 +1,0 @@
-{
-  "title": "Data",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "rds",
-    "dynamodb"
-  ]
-}

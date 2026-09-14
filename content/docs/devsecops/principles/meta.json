@@ -1,9 +1,0 @@
-{
-  "title": "Principles",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "cia-owasp",
-    "vuln-basics"
-  ]
-}

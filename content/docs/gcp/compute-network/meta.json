@@ -1,9 +1,0 @@
-{
-  "title": "Compute & Network",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "compute",
-    "networking"
-  ]
-}

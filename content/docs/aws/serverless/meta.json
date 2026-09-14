@@ -1,9 +1,0 @@
-{
-  "title": "Serverless & AI",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "lambda",
-    "bedrock"
-  ]
-}

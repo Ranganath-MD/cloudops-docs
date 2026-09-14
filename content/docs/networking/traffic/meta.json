@@ -1,7 +1,0 @@
-{
-  "title": "Traffic",
-  "description": "DNS and load balancing",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": ["dns-load-balancing", "routing"]
-}

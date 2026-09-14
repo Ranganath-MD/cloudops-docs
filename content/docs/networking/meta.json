@@ -1,12 +1,7 @@
 {
   "title": "Networking",
-  "description": "VPC, DNS, and load balancing",
+  "description": "OSI/TCP-IP, VPC, DNS, and routing",
+  "icon": "Network",
   "root": true,
-  "pages": [
-    "index",
-    "---Design---",
-    "fundamentals",
-    "---Traffic---",
-    "traffic"
-  ]
+  "pages": ["index"]
 }

@@ -1,16 +1,122 @@
 ---
-title: Networking Overview
-description: Core networking for cloud environments
+title: Networking Basics
+description: How computers talk, why DevOps cares, and how to explain it in interviews.
 ---
 
-Design networks that are secure, reachable, and easy to operate.
+## What Is It?
 
-<Callout title="From curriculum" type="info">
-  Covers networking fundamentals plus AWS VPC labs (CIDRs, subnets, IGW, NAT, peering).
+<Callout title="Definition" type="info">
+Networking is how computers, servers, and services send data to each other. In Cloud and DevOps work, that usually means IP addresses, ports, DNS, routing, and firewalls.
 </Callout>
 
-<Cards>
-  <Card title="OSI & TCP/IP" href="/docs/networking/fundamentals/osi-tcpip" description="Models, IP, CIDR, DNS, DHCP" />
-  <Card title="VPC" href="/docs/networking/fundamentals/vpc" description="Subnets, routing, security groups" />
-  <Card title="DNS & LB" href="/docs/networking/traffic/dns-load-balancing" description="Name resolution and traffic" />
-</Cards>
+Technically, a network is a set of devices that share a path for packets. Each packet has a source, a destination, and a protocol such as TCP (Transmission Control Protocol) or UDP (User Datagram Protocol).
+
+Think of it as a postal system: the IP address is the house, the port is the apartment, DNS (Domain Name System) is the phone book, and the router is the post office that chooses the next hop.
+
+## Why Do We Need It?
+
+Apps do not run in isolation. A browser must reach a load balancer, the load balancer must reach app servers, and those servers must reach a database, object storage, or another API.
+
+Without a clear network design:
+
+- Services cannot find each other.
+- Traffic takes the wrong path or never arrives.
+- You cannot control who is allowed to talk to whom.
+- Outages look like “the app is down” when the real issue is DNS, routing, or a blocked port.
+
+DevOps uses networking to place workloads, expose them safely, debug timeouts, and prove that production traffic is isolated. Security groups, NACLs (Network Access Control Lists), and firewalls only make sense after you understand IP, ports, and routes.
+
+## How Does It Work?
+
+### Main pieces
+
+| Piece | Role |
+| --- | --- |
+| IP address | Identity of a host on the network |
+| CIDR | IP range, for example `10.0.0.0/16` |
+| Port | Which process on the host should receive the packet |
+| Protocol | Rules of the conversation (TCP, UDP, ICMP) |
+| DNS | Maps a name like `api.example.com` to an IP |
+| Router / route table | Chooses the next hop for a packet |
+| Firewall | Allows or denies traffic by IP, port, and protocol |
+
+IPv4 addresses are 32-bit numbers written as four octets, such as `10.0.1.20`. CIDR (Classless Inter-Domain Routing) says how many bits are the network prefix. `/24` means the first 24 bits are the network; the rest can be hosts.
+
+### OSI vs TCP/IP
+
+Interviewers often ask for the OSI (Open Systems Interconnection) model. You do not need every protocol. You need the layers you actually debug.
+
+| OSI layer | What you debug | Example |
+| --- | --- | --- |
+| 7 Application | HTTP, DNS, APIs | 404, TLS handshake, wrong hostname |
+| 4 Transport | TCP / UDP ports | Connection refused, timeout |
+| 3 Network | IP, routing | No route to host, wrong subnet |
+| 2 Data link | MAC, switch, ENI | Same subnet, ARP, VPC ENI |
+| 1 Physical | Cable, NIC, AZ | Link down |
+
+TCP/IP is the model the internet actually uses: Application, Transport, Internet, Link. OSI is the teaching map; TCP/IP is what packets follow.
+
+### Packet flow
+
+```text
+Client
+  |  DNS: name -> IP
+  v
+Destination IP + port (e.g. 10.0.1.20:443)
+  |
+  v
+Route table picks next hop
+  |
+  v
+Firewall / security group check
+  |
+  v
+Server process listening on that port
+```
+
+<Steps size="sm">
+<Step>
+The client asks DNS for a name and gets an IP.
+</Step>
+<Step>
+The client sends a packet to that IP and port, usually TCP 443 for HTTPS.
+</Step>
+<Step>
+Routers (or a VPC route table) forward the packet hop by hop.
+</Step>
+<Step>
+A firewall or security group allows or drops it.
+</Step>
+<Step>
+If a process is listening, TCP completes a three-way handshake: SYN, SYN-ACK, ACK. Then application data flows.
+</Step>
+</Steps>
+
+TCP is reliable and connection-oriented. UDP is faster and connectionless. DNS and many health checks use UDP. Web apps, SSH, and databases almost always use TCP.
+
+Public vs private: a public IP can be reached from the internet (usually through an Internet Gateway). A private IP stays inside the VPC or corporate network. Private hosts often use NAT (Network Address Translation) to reach the internet without being reachable inbound.
+
+## Interview Questions & Answers
+
+### Basic
+
+<Accordions>
+  <Accordion title="What is networking in simple terms?">
+    Networking is how two systems send data using IP addresses, ports, and protocols. In the cloud, we also add DNS, routing, and firewalls so services can find each other and stay isolated.
+  </Accordion>
+  <Accordion title="What is an IP address?">
+    An IP address is the network identity of a host. IPv4 looks like `10.0.1.20`. Combined with CIDR, it tells us which network the host belongs to and which other hosts it can reach directly.
+  </Accordion>
+  <Accordion title="What is a port?">
+    A port is a number on a host that maps traffic to a process. HTTP is 80, HTTPS is 443, SSH is 22, PostgreSQL is 5432. The same server can run many services because each listens on a different port.
+  </Accordion>
+  <Accordion title="TCP vs UDP?">
+    TCP sets up a connection, resends lost packets, and is used for web, SSH, and databases. UDP does not handshake or guarantee delivery, so it is used for DNS, streaming, and some health checks. If you need reliability, use TCP.
+  </Accordion>
+  <Accordion title="What is DNS?">
+    DNS translates a hostname into an IP address. Clients, load balancers, and Kubernetes services all depend on it. If DNS is wrong, the app looks down even when the server is healthy.
+  </Accordion>
+  <Accordion title="OSI vs TCP/IP?">
+    OSI is a seven-layer teaching model. TCP/IP is the four-layer model the internet uses. In interviews I map problems to Application, Transport, Network, and Link, because that is how we actually troubleshoot.
+  </Accordion>
+</Accordions>

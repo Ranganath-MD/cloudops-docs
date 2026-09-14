@@ -3,8 +3,25 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* Match Atlassian Design System typefaces:
+   https://atlassian.design/foundations/typography/product-typefaces-and-scale */
+@theme inline {
+  --font-sans:
+    'Atlassian Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono:
+    'Atlassian Mono', ui-monospace, Menlo, 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono',
+    'Oxygen Mono', 'Liberation Mono', monospace;
+}
+
+:root {
+  --docs-font-sans: var(--font-sans);
+  --docs-font-mono: var(--font-mono);
+}
+
 html {
   scrollbar-gutter: stable;
+  font-family: var(--docs-font-sans);
 }
 
 html > body[data-scroll-locked] {
@@ -54,13 +71,15 @@ html > body[data-scroll-locked] {
 
 body {
   background: var(--color-fd-background);
+  font-family: var(--docs-font-sans);
   font-size: 14px;
   line-height: 1.55;
   color: var(--color-fd-foreground);
+  -webkit-font-smoothing: antialiased;
 }
 
 #nd-notebook-layout {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* ---------- Top header ---------- */
@@ -228,7 +247,6 @@ body {
   font-weight: 650;
   color: var(--color-fd-foreground);
 }
-
 #nd-page .prose :where(p, ul, ol, pre, table, blockquote, hr) {
   margin-top: 0.55em !important;
   margin-bottom: 0.55em !important;
@@ -240,7 +258,10 @@ body {
 }
 
 #nd-page .prose :where(code) {
+  font-family: var(--docs-font-mono);
   font-size: 0.84em !important;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
   padding: 0.08em 0.25em !important;
   border-radius: 0.25rem;
   background: var(--color-fd-muted);
@@ -260,7 +281,6 @@ body {
 }
 
 #nd-page figure.shiki [role='region'] {
-  padding: 0.65rem 0.75rem !important;
   border-radius: 0 !important;
   background: var(--color-fd-muted);
 }
@@ -268,7 +288,10 @@ body {
 #nd-page figure.shiki pre,
 #nd-page .prose figure pre,
 #nd-page .prose :where(pre) {
+  font-family: var(--docs-font-mono);
   font-size: 12.5px !important;
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
   line-height: 1.45 !important;
   padding: 0 !important;
   margin: 0 !important;

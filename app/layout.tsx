@@ -1,11 +1,6 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import './global.css';
-import { Geist } from 'next/font/google';
 import type { Metadata } from 'next';
-
-const geist = Geist({
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -18,8 +13,28 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={geist.className} suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://ds-cdn.prod-east.frontend.public.atl-paas.net/assets/font-rules/v3/atlassian-fonts.css"
+        />
+        <link
+          rel="preload"
+          href="https://ds-cdn.prod-east.frontend.public.atl-paas.net/assets/fonts/atlassian-sans/v2/AtlassianSans-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://ds-cdn.prod-east.frontend.public.atl-paas.net/assets/fonts/atlassian-mono/v1/AtlassianMono-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         <RootProvider>{children}</RootProvider>
       </body>
     </html>

@@ -1,7 +1,0 @@
-{
-  "title": "Delivery",
-  "description": "GitOps and pipelines",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": ["gitops", "pipelines"]
-}

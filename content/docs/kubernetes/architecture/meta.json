@@ -1,9 +1,0 @@
-{
-  "title": "Architecture",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": [
-    "control-plane",
-    "install"
-  ]
-}

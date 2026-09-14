@@ -1,7 +1,0 @@
-{
-  "title": "Operations",
-  "description": "Day-2 cluster operations",
-  "defaultOpen": true,
-  "collapsible": true,
-  "pages": ["upgrades", "troubleshooting"]
-}
